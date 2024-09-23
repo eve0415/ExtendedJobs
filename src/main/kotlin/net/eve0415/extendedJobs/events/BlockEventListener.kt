@@ -1,6 +1,9 @@
 package net.eve0415.extendedJobs.events
 
 import net.eve0415.extendedJobs.ExtendedJobs
+import net.md_5.bungee.api.ChatColor
+import net.md_5.bungee.api.ChatMessageType
+import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.BlockPlaceEvent
 
@@ -8,6 +11,12 @@ data class BlockEventListener(private val plugin: ExtendedJobs) : EventListener(
     val whitelistedPlace = getRawWhitelistedPlace().filter { !it.contains("*") }
     val whiteListedPlaceWildcard =
         getRawWhitelistedPlace().filter { it.contains("*") }.map { Regex(it.replace("*", ".*")) }
+
+    val errorMessage = lazy {
+        TextComponent("You are not eligible to place this block/item.").apply {
+            color = ChatColor.RED
+        }
+    }
 
     @EventHandler
     fun onEvent(event: BlockPlaceEvent) {
@@ -19,6 +28,7 @@ data class BlockEventListener(private val plugin: ExtendedJobs) : EventListener(
         val jobs = getJobs(event.player)
         if (jobs.isEmpty()) {
             event.isCancelled = true
+            event.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, errorMessage.value)
             return
         }
 
@@ -35,6 +45,7 @@ data class BlockEventListener(private val plugin: ExtendedJobs) : EventListener(
         }
 
         event.isCancelled = true
+        event.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, errorMessage.value)
     }
 
     private fun getRawWhitelistedPlace(): Set<String> {

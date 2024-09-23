@@ -1,6 +1,9 @@
 package net.eve0415.extendedJobs.events
 
 import net.eve0415.extendedJobs.ExtendedJobs
+import net.md_5.bungee.api.ChatColor
+import net.md_5.bungee.api.ChatMessageType
+import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
@@ -9,6 +12,12 @@ data class InteractEventListener(private val plugin: ExtendedJobs) : EventListen
     val whitelistedInteract = getRawWhitelistedInteract().filter { !it.contains("*") }
     val whiteListedInteractWildcard =
         getRawWhitelistedInteract().filter { it.contains("*") }.map { Regex(it.replace("*", ".*")) }
+
+    val errorMessage = lazy {
+        TextComponent("You are not eligible to interact with this block.").apply {
+            color = ChatColor.RED
+        }
+    }
 
     @EventHandler
     fun onEvent(event: PlayerInteractEvent) {
@@ -31,6 +40,7 @@ data class InteractEventListener(private val plugin: ExtendedJobs) : EventListen
         val jobs = getJobs(event.player)
         if (jobs.isEmpty()) {
             event.isCancelled = true
+            event.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, errorMessage.value)
             return
         }
 
@@ -47,6 +57,7 @@ data class InteractEventListener(private val plugin: ExtendedJobs) : EventListen
         }
 
         event.isCancelled = true
+        event.player.spigot().sendMessage(ChatMessageType.ACTION_BAR, errorMessage.value)
     }
 
     private fun getRawWhitelistedInteract(): Set<String> {
