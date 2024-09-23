@@ -17,8 +17,10 @@ restriction:
   Brewer:
     craft:
       - minecraft:brewing_stand
+      - minecraft:cauldron
     interact:
       - minecraft:brewing_stand
+      - minecraft:cauldron
     place: [ ]
 
   Builder:
@@ -60,6 +62,8 @@ restriction:
       - minecraft:enchanting_table
       - minecraft:anvil
       - minecraft:grindstone
+      - minecraft:book
+      - minecraft:lectern
     interact:
       - minecraft:enchanting_table
       - minecraft:anvil
@@ -80,6 +84,7 @@ restriction:
       - minecraft:composter
       - minecraft:campfire
       - minecraft:hay_block
+      - minecraft:sugar
       - minecraft:bread
       - minecraft:cake
       - minecraft:cookie
