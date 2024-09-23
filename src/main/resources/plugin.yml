@@ -1,0 +1,11 @@
+name: ExtendedJobs
+version: '1.0-SNAPSHOT'
+main: net.eve0415.extendedJobs.ExtendedJobs
+api-version: 1.20
+authors:
+  - eve0415
+description: Extend Jobs (Reborn) plugin to add restrictions and more features.
+depend:
+  - Jobs
+softdepend:
+  - Jobs

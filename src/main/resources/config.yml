@@ -1,0 +1,146 @@
+# This is the default configuration file for the plugin.
+# You can edit this file to change the settings of the plugin.
+
+# This configuration defines crafting and interaction restrictions for specific jobs in a whitelist format. Please note the following rules:
+#
+#  1. Whitelist System: Only items and blocks explicitly listed under each job’s craft and interact sections can be crafted or interacted with by that job.
+#  2. Exclusive Restrictions: If a job is allowed to craft a specific item or interact with a specific block, all other jobs are restricted from doing so unless explicitly stated otherwise.
+#  3. Multiple Job Permissions: If the same item or block is listed under multiple jobs, each of those jobs will be allowed to craft or interact with it.
+#  4. Unrestricted Items/Blocks: Any item or block that is *not listed* under any job will be accessible to all jobs without restriction.
+
+# Job Name is Case Sensitive
+# Craft: Items that can be crafted by the job
+# Interact: Blocks that can be interacted with by the job
+# Place: Blocks that can be placed by the job
+
+restriction:
+  Brewer:
+    craft:
+      - minecraft:brewing_stand
+    interact:
+      - minecraft:brewing_stand
+    place: [ ]
+
+  Builder:
+    craft:
+      - minecraft:redstone_torch
+      - minecraft:redstone_lamp
+      - minecraft:lever
+      - minecraft:*_button
+      - minecraft:*_pressure_plate
+      - minecraft:daylight_detector
+      - minecraft:comparator
+      - minecraft:repeater
+      - minecraft:observer
+      - minecraft:dispenser
+      - minecraft:dropper
+      - minecraft:piston
+      - minecraft:sticky_piston
+      - minecraft:tripwire_hook
+      - minecraft:note_block
+      - minecraft:stonecutter
+    interact:
+      - minecraft:stonecutter
+    place: [ ]
+
+  Crafter:
+    craft:
+      - minecraft:crafting_table
+    interact: [ ]
+    place: [ ]
+
+  Digger:
+    craft:
+      - minecraft:*_shovel
+    interact: [ ]
+    place: [ ]
+
+  Enchanter:
+    craft:
+      - minecraft:enchanting_table
+      - minecraft:anvil
+      - minecraft:grindstone
+    interact:
+      - minecraft:enchanting_table
+      - minecraft:anvil
+      - minecraft:*_anvil
+      - minecraft:grindstone
+    place: [ ]
+
+  Explorer:
+    craft: [ ]
+    interact: [ ]
+    place: [ ]
+
+  Farmer:
+    craft:
+      - minecraft:*_hoe
+      - minecraft:shears
+      - minecraft:*_dye
+      - minecraft:composter
+      - minecraft:campfire
+      - minecraft:hay_block
+      - minecraft:bread
+      - minecraft:cake
+      - minecraft:cookie
+      - minecraft:pumpkin_pie
+      - minecraft:bone_meal
+      - minecraft:beetroot_soup
+      - minecraft:beehive
+    interact: [ ]
+    place: [ ]
+
+  Fisherman:
+    craft:
+      - minecraft:fishing_rod
+      - minecraft:bucket
+      - minecraft:*_boat
+    interact: [ ]
+    place: [ ]
+
+  Hunter:
+    craft:
+      - minecraft:*_sword
+      - minecraft:bow
+      - minecraft:arrow
+      - minecraft:crossbow
+      - minecraft:trident
+      - minecraft:shield
+    interact: [ ]
+    place: [ ]
+
+  Miner:
+    craft:
+      - minecraft:*_pickaxe
+    interact: [ ]
+    place: [ ]
+
+  Weaponsmith:
+    craft:
+      - minecraft:*_sword
+      - minecraft:bow
+      - minecraft:arrow
+      - minecraft:crossbow
+      - minecraft:trident
+      - minecraft:shield
+      - minecraft:anvil
+      - minecraft:cauldron
+      - minecraft:smithing_table
+      - minecraft:*_helmet
+      - minecraft:*_chestplate
+      - minecraft:*_leggings
+      - minecraft:*_boots
+    interact:
+      - minecraft:anvil
+      - minecraft:*_anvil
+      - minecraft:cauldron
+      - minecraft:smithing_table
+    place: [ ]
+
+  Woodcutter:
+    craft:
+      - minecraft:*_axe
+    interact:
+      - minecraft:*_log
+    place:
+      - minecraft:*_sapling
