@@ -5,7 +5,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.inventory.PrepareItemCraftEvent
 
-data class CraftEventListener(private val plugin: ExtendedJobs) : EventListener(plugin) {
+class CraftEventListener(plugin: ExtendedJobs) : EventListener(plugin) {
     val whitelistedCrafting = getRawWhitelistedCrafting().filter { !it.contains("*") }
     val whiteListedCraftingWildcard =
         getRawWhitelistedCrafting().filter { it.contains("*") }.map { Regex(it.replace("*", ".*")) }

@@ -8,7 +8,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 
-data class InteractEventListener(private val plugin: ExtendedJobs) : EventListener(plugin) {
+class InteractEventListener(plugin: ExtendedJobs) : EventListener(plugin) {
     val whitelistedInteract = getRawWhitelistedInteract().filter { !it.contains("*") }
     val whiteListedInteractWildcard =
         getRawWhitelistedInteract().filter { it.contains("*") }.map { Regex(it.replace("*", ".*")) }
@@ -65,4 +65,3 @@ data class InteractEventListener(private val plugin: ExtendedJobs) : EventListen
             ?: emptySet()
     }
 }
-

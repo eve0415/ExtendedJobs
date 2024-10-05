@@ -7,7 +7,7 @@ import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.BlockPlaceEvent
 
-data class BlockEventListener(private val plugin: ExtendedJobs) : EventListener(plugin) {
+class BlockEventListener(plugin: ExtendedJobs) : EventListener(plugin) {
     val whitelistedPlace = getRawWhitelistedPlace().filter { !it.contains("*") }
     val whiteListedPlaceWildcard =
         getRawWhitelistedPlace().filter { it.contains("*") }.map { Regex(it.replace("*", ".*")) }
